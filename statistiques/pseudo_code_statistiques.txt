@@ -1,0 +1,26 @@
+variables 
+    nbre = 0, en nombre entier
+    monTableau = [], tableau remplit par des nombres entiers
+    somme = 0, en nombre entier
+    moyenne = 0, en nombre entier
+    plusPetitNombre = 0, en nombre entier
+    plusGrandNombre = 0, en nombre entier
+
+ecrire "Entrez un nombre. \nSaisissez 0 (zéro) pour arrêter la saisie de valeurs."
+lire nbre
+
+tant que nbre != 0 faire
+    somme = somme + nbre
+    si nbre > plusGrandNombre alors
+		plusGrandNombre = nbre
+	fin de si
+	si nbre < plusPetitNombre alors
+		plusPetitNombre = nbre
+	fin de si.
+    ajouter ce nombre au tableau avec la methode Array.push de JS
+    afficher "Entrez un nombre. \nSaisissez 0 (zéro) pour arrêter la saisie de valeurs."
+    lire nombre
+fin de tant que
+
+moyenne = somme / monTableau.length (longueur du tableau)
+ecrire "Nombres saisis : " + monTableau.length + "\Compris entre : " + plusPetitNombre + " et " + plusGrandNombre + "\La somme est : " + somme + "\La moyenne est : " + moyenne)
