@@ -1,44 +1,72 @@
-methode mettreEssence()
+methode Repeindre : utiliser setter et getter
 
-    quantité de carburant à ajouter
-        capacitéAjoutMaxi = capacitéReservoir - niveaud'essence
+        pour info : le programme appelant demande la couleur souhaité qui devient le parametre newColorRequested de la methode.
 
-    test = savoir si on peut ajouter autant de carburant
+    si newColorRequested == couleur actuelle du véhicule (utiliser get getColor) alors 
+        dashboradMessage = Couleur identique. Merci pour le rafraichissement (utiliser setDashboardMessage)
+    sinon
+        dashboradMessage = "Votre choix de couleur : " + getColor() + ". Merci."
+
+---------------------------------------------------
+
+methode mettreEssence() utiliser setter et getter
+
+        pour infos : c'est le programme appelant qui demande la quantité d'essence
+                        afficher "combien voulez-vous ajouter de carburant ?"
+                        lire ajout.
+
+        pour info : quantité de carburant à ajouter
+                        capacitéAjoutMaxi = capacitéReservoir - niveaud'essence
+
+        pour info : attendu par le programme : test pour savoir si on peut ajouter autant de carburant
+                        si OK : ajout de carburant + message de retour
+                        sinon : refus d'appoint et genere un message d'erreur
+
+    si ajout < capacitéAjoutMaxi et positif alors
+        niveaud'essence = ajout + niveaud'essence
+        dashboradMessage = dashbordMessage + "OK, merci, vous avez niveaud'essence dans votre réservoir."
+    sinon dashboradMessage = dashbordMessage + "erreur, ceci n'est pas possible."
+
+---------------------------------------------------
+
+Méthode exposée : Se déplacer / utiliser setter et getter
+    variable :
+        distance
+        averageSpeed
+
+    parametres de conso :
+        consoVille 10l/100 = 10/100
+        consoRoute 5l/100 = 5/100
+        consoAutoroute 8l/100 = 8/100
+        consoAutorouteSpeeding 12 l/100 : 12/100
+
+    1. demander la distance a parcourir
+        afficher "distance à parcourir"
+        lire distance en Decimal
+
+    2. demander le type de trajet (ville route autoroute autorouteSpeeding)
+        afficher "quel type de trajet 1.ville 2.route 3.autoroute 4.autorouteSpeeding"
+        lire trajet en Entier
+
+    3. calcul de la consomation de carburant
+        si trajet == ville alors consoTrajet = distance * consoVille
+        si trajet == route alors consoTrajet = distance * consoRoute
+        si trajet == autoroute alors consoTrajet = distance * consoAutoroute
+        si trajet == autorouteSpeeding alors consoTrajet = distance * consoAutorouteSpeeding
+
+    4. calculer si le trajet est possible avec le carburant actuel
+        si consoTrajet > fuelLevel alors dashboradMessage = "trajet OK. consommation prévue : " + consoTrajet + "niveau restant de carburant" + fuelLevel - consoTrajet
+        sinon dashboradMessage = "erreur : trajet impossible avec cette quantié de carburant"
         
-        si OK : ajout de carburant + message de retour
-        sinon : refus d'appoint et genere un message d'erreur
+---------------------------------------------------
 
-        ajout = "combien voulez vous ajouter de carburant ?"
-        si ajout < capacitéAjoutMaxi (et positif) alors
-            niveaud'essence = ajout + niveaud'essence
-            "OK, merci, vous avez niveaud'essence dans votre réservoir."
-        sinon "erreur, ceci n'est pas possible."
+Méthode exposée redéfinie toString() / utiliser setter et getter
+    variable label en chaine de caratere
+    label = immatriculation + puissance + coloris
+    pour infos : c'est le programme appelant qui va afficher label
 
-    renvoit du nouveau niveau de carburant au programme appelant.
-        return ou methode ?  pour renvoi niveau d'essence
+---------------------------------------------------
 
-Méthode exposée : Se déplacer
-parametres :
-    distance
-    averageSpeed
-
-parametres de conso :
-    consoVille 10l/100 = 10/100
-    consoRoute 5l/100 = 5/100
-    consoAutoroute 8l/100 = 8/100
-    consoAutorouteSpeeding 12 l/100 : 12/100
-
-1. demander la distance a parcourir
-
-2. demander le type de trajet (ville route autoroute autorouteSpeeding)
-
-3. calcul de la consomation de carburant
-    si trajet == ville alors consoTrajet = distance * consoVille
-    si trajet == route alors consoTrajet = distance * consoRoute
-    si trajet == autoroute alors consoTrajet = distance * consoAutoroute
-    si trajet == autorouteSpeeding alors consoTrajet = distance * consoAutorouteSpeeding
-
-4. calculer si le trajet est possible avec le carburant actuel
-    si consoTrajet > fuelLevel alors "trajet OK. consommation prévue : " + consoTrajet + "niveau restant de carburant" + fuelLevel - consoTrajet
-    sinon "erreur : trajet impossible avec cette quantié de carburant"
-    
+Fonction pour connaitre le nouveau statut d'assurance / utiliser setter et getter
+    afficher "quel est le statut d'assurance"
+    lire assurance
