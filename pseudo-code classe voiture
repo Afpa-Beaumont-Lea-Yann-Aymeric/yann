@@ -70,3 +70,36 @@ Méthode exposée redéfinie toString() / utiliser setter et getter
 Fonction pour connaitre le nouveau statut d'assurance / utiliser setter et getter
     afficher "quel est le statut d'assurance"
     lire assurance
+
+---------------------------------------------------
+
+programme principal
+variables
+distance = nombre en decimal
+averageSpeed = nombre en Entier
+
+creation d'un vehicule avec la methode new de la classe Voiture.
+
+ecrire "Le vehicule est-il assuré ? O/N"
+lire assurance avec le setter
+
+appel de la méthode repaint
+ecrire "Quel coloris souhaitez-vous avoir ? \nNoir - Bleu - Rouge - Gris - Blanc"
+lire couleur avec le setter approprié
+
+appel de la methode refuel
+ecrire "Combien de carburant souhaitez-vous ajouter ?"
+lire niveaud'essence avec le setter approprié
+
+
+ecrire "Indiquez la distance à parcourir :"
+lire distance
+
+ecrire "Indiquez le type de trajet : \nVille : 1 \nRoute : 2 \nAutoroute : 3 \nAutoroute en excès de vitesse : 4"
+lire averageSpeed
+
+appel de la methode move
+car1.move(distance, averageSpeed);
+
+ecrire car1.dashboradMessage
+ecrire car1.toString
