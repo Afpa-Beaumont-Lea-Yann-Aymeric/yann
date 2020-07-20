@@ -1,0 +1,78 @@
+/* page CSS du modele de page pour les exercices Darmangeat sur l'algorithmique" */
+
+body
+{
+	background-color: #9AD9FF;
+	margin-left: 13%;
+	margin-right: 13%;
+}
+
+header
+{
+	display: flex;
+	align-items: left;
+}
+
+#bloc_texte_titre
+{
+	margin-left: 5%;	
+	text-align: left;
+}
+
+#logo
+{
+	width: 208px;
+	margin-top: 1.2em;
+}
+
+img
+{
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+
+h1
+{
+	font-size: 2.1em;
+}
+
+h2
+{
+	margin-top: 2.2em;
+	text-decoration: underline;
+	font-size: 1.5em;
+}
+
+article
+{
+	margin-left: 1em;
+}
+
+p
+{
+	margin-top: 1.8em;
+	font-size: 1.1em;
+}
+
+#enonce
+{
+	border: 0.8px black dotted;
+	background-color: #CBEBFF;
+	border-radius: 5px;
+	padding-left: 4%;
+	padding-right: 4%;
+	text-align: justify;
+}
+
+#note
+{
+	border: 0.8px black dotted;
+	border-radius: 5px;
+	box-shadow: 4px 4px 8px black;
+	text-align: center;
+	padding-left: 4%;
+	padding-right: 4%;
+}
+
