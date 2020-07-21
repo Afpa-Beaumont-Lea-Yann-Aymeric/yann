@@ -11,35 +11,32 @@
 class Voiture {
 
     /**
-     * @param {string} immatriculation - Le numéro d'immatriculation
-     * @param {string} couleur - Le coloris du véhicule
-     * @param {number} poids - Le poids du véhicule
-     * @param {number} puissance  - La puissance fiscale du véhicule
-     * @param {number} capaciteReservoir - La capacité du réservoir du véhicule
-     * @param {number} niveauEssence - Le niveau d'essence dans le reservoir du véhicule
-     * @param {number} nbrePlace - Le nombre de place dans le véhicule
-     * @param {boolean} assurance - Le statut d'assurance du véhicule
-     * @param {string} messageTdB - Les messages apparaissant au tableau de bord
+     * @param {string} immatriculation - Le numéro d'immatriculation du véhicule.
+     * @param {string} couleur - Le coloris du véhicule du véhicule.
+     * @param {number} poids - Le poids du véhicule.
+     * @param {number} puissance  - La puissance fiscale du véhicule.
+     * @param {number} capaciteReservoir - La capacité du réservoir du véhicule.
+     * @param {number} nbrePlace - Le nombre de place dans le véhicule.
      */
-    constructor (immatriculation, couleur, poids, puissance, capaciteReservoir, niveauEssence = 5, nbrePlace, assurance = false, messageTdB = "Bonjour") {
+    constructor (immatriculation, couleur, poids, puissance, capaciteReservoir, nbrePlace) {
         let registration = immatriculation;
         let color = couleur;
         let weight = poids;
         let power = puissance;
         let tankCapacity = capaciteReservoir;
-        let fuelLevel = niveauEssence;
+        let fuelLevel = 5;
         let seatQty = nbrePlace;
-        let insurance = assurance;
-        let dashboardMessage = messageTdB; 
+        let insurance = false;
+        let dashboardMessage = "Bonjour"; 
 
     /**
      * @description mise en place des getter sur toutes les propriétés pour pouvoir les lire en dehors du constructor 
      */
 
-        this.getRegistration = function() {
+       this.getRegistration = function() {
             return registration;
         }
-        
+       
         this.getColor = function() {
             return color;
         }
@@ -47,6 +44,7 @@ class Voiture {
         this.getWeight = function() {
             return weight;
         }
+     
 
         this.getPower = function() {
             return power;
@@ -127,7 +125,7 @@ class Voiture {
             this.setFuelLevel(this.getFuelLevel() + newFuelQty); 
             this.setDashboardMessage(this.getDashboardMessage() + "\nNouveau niveau d'essence : " + this.getFuelLevel() + " litres. Merci.");
 		} else {
-            this.setDashboardMessage(this.getDashboardMessage() + "\nErreur : " + newFuelQty + " litres d'essence impossible.");
+            this.setDashboardMessage(this.getDashboardMessage() + "\nErreur : " + newFuelQty + " litres d'essence impossible. En excès par rapport à la taille du réservoir.");
         }
 	
     }	
@@ -177,111 +175,3 @@ class Voiture {
 }
 
 
-
-
-/* test */
-// creation d'un vehicule
-/**
- * @description Véhicule témoin servant à controler le fonctionnement du programme.
- */
-let car1 = new Voiture ("AZ-123-FE", "bleu", 950, 5, 50, this.fuelLevel, 4, this.insurance, this.dashboardMessage);
-
-
-/**
- * @returns {boolean} Renvoie le statut d'assurance du véhicule après demande à l'utilisateur du programme.
- */
-car1.setInsurance(testOuiNon(prompt("Le vehicule est-il assuré ? O/N")) == "O" ? true : false);
-
-/**
- * @returns {string} Renvoie le nouveau coloris sohaité pour le véhicule, après appel de la methode repaint.
- */
-car1.repaint(testColor(prompt("Quel coloris souhaitez-vous avoir ? \nNoir - Bleu - Rouge - Gris - Blanc")));
-
-
-/**
- * @returns {number} Renvoie la quantité de carburant à ajouter au véhicule, apres appel de la methode refuel.
- */
-car1.refuel(estnombreAVirgule(parseFloat(prompt("Combien de carburant souhaitez-vous ajouter ?"))));
-
-
-let distance = estnombreAVirgule(parseFloat(prompt("Indiquez la distance à parcourir : ")));
-let averageSpeed = testRoad(estNombre(parseInt(prompt("Indiquez le type de trajet : \nVille : 1 \nRoute : 2 \nAutoroute : 3 \nAutoroute en excès de vitesse : 4"))));
-/**
- * @description appel de la méthode move pour calcul de la possibilité de faire le parcours désiré.
- */
-car1.move(distance, averageSpeed);
-
-
-
-
-console.log(car1.getDashboardMessage());
-console.log(car1.toString());
-
-/* fonctions */
-/**
- * @function testOuiNon
- * @description Fonction qui attend que l'utilisateur reponde obligatoirement par Oui ou Non
- * @param {string} value - Réponse utilisateur testé.
- * @returns {string} Réponse utilisateur "Oui" ou "Non"
- */
-function testOuiNon(value) {
-    value = value.toUpperCase();
-    while (value != "O" && value != "N") {
-        value = prompt("Erreur. \nVeuillez répondre par Oui ou Non : O/N");
-        value = value.toUpperCase();
-    }
-    return value;
-}
-/**
- * @function testColor
- * @description Fonction qui attend que l'utilisateur réponde obligatoirement l'une des couleurs proposées.
- * @param {string} value - Réponse utilisateur testée.
- * @returns {string} Réponse utilisateur de la couleur souhaitée pour le véhicule.
- */
-function testColor(value) {
-    value = value.toLowerCase();
-    while (value != "noir" && value != "bleu" && value != "rouge" && value != "gris" && value != "blanc") {
-        value = prompt("Erreur. \nVeuillez répondre par Noir - Bleu - Rouge - Gris - Blanc");
-        value = value.toLowerCase();
-    }
-    return value;
-}
-
-/**
- * @function testRoad
- * @description Fonction qui attend que l'utilisateur réponde obligatoirement l'un des types de trajet proposés.
- * @param {number} value - Réponse utilisateur testée.
- * @returns {number} Réponse utilisateur du type de trajet envisagé avec le véhicule.
- */
-function testRoad(value) {
-    while (value != 1 && value != 2 && value != 3 && value != 4) {
-        value = estNombre(parseInt(prompt("Erreur. \nVeuillez répondre par \nVille : 1 \nRoute : 2 \nAutoroute : 3 \nAutoroute en excès de vitesse : 4")));
-    }
-    return value;
-}
-
-/**
- * @function estNombre
- * @description Fonction qui attend que l'utilisateur réponde obligatoirement par un nombre.
- * @param {number} testNbre - Réponse utilisateur testée.
- * @returns Réponse utilisateur.
- */
-function estNombre(testNbre) {
-	while (isNaN(testNbre)) {
-		testNbre = parseInt(prompt("Ceci n'est pas un nombre. Merci de taper un nombre."));
-	}
-	return testNbre;
-}
-
-/**
- * @function estnombreAVirgule
- * @description Fonction qui attend que l'utilisateur réponde obligatoirement par un nombre.
- * @param {number} testNbre - Réponse utilisateur testée.
- * @returns Réponse utilisateur.
- */
-function estnombreAVirgule(testNbre) {
-    while (isNaN(testNbre)) {
-		testNbre = parseFloat(prompt("Ceci n'est pas un nombre. Merci de taper un nombre."));
-	}
-	return testNbre;
-}
