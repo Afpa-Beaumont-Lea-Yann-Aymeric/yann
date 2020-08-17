@@ -141,13 +141,13 @@ class Voiture {
         let fuelForTrip;
         
         if (averageSpeedToTest == 1) { 
-            fuelForTrip = parseFloat(distanceToTest * 10 / 100); 
+            fuelForTrip = Math.round(parseFloat(distanceToTest * 10 / 100)*100)/100; 
         } else if (averageSpeedToTest == 2) {
-            fuelForTrip =  parseFloat(distanceToTest * 5 / 100);
+            fuelForTrip =  Math.round(parseFloat(distanceToTest * 5 / 100)*100)/100;
         } else if (averageSpeedToTest == 3) {
-            fuelForTrip = parseFloat(distanceToTest * 8 / 100) ;          
+            fuelForTrip = Math.round(parseFloat(distanceToTest * 8 / 100)*100)/100;          
         } else {
-            fuelForTrip = parseFloat(distanceToTest * 12 / 100);
+            fuelForTrip = Math.round(parseFloat(distanceToTest * 12 / 100)*100)/100;
         }
 
         /**

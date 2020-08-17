@@ -30,7 +30,7 @@ car1.repaint(testColor(prompt("Quel coloris souhaitez-vous avoir ? \nNoir - Bleu
 /**
  * @returns {number} Renvoie la quantité de carburant à ajouter au véhicule, apres appel de la methode refuel.
  */
-car1.refuel(estnombreAVirgule(parseFloat(prompt("Combien de carburant souhaitez-vous ajouter ?"))));
+car1.refuel(Math.round(estnombreAVirgule(parseFloat(prompt("Combien de carburant souhaitez-vous ajouter ?")))*100)/100);
 
 
 distance = estnombreAVirgule(parseFloat(prompt("Indiquez la distance à parcourir : ")));
@@ -103,8 +103,8 @@ function testRoad(value) {
  * @returns Réponse utilisateur.
  */
 function estNombre(testNbre) {
-	while (isNaN(testNbre)) {
-		testNbre = parseInt(prompt("Ceci n'est pas un nombre. Merci de taper un nombre."));
+	while (isNaN(testNbre) || (testNbre < 0)) {
+		testNbre = parseInt(prompt("Donnée invalide. Merci de taper un nombre entier positif."));
 	}
 	return testNbre;
 }
@@ -117,8 +117,8 @@ function estNombre(testNbre) {
  * @returns Réponse utilisateur.
  */
 function estnombreAVirgule(testNbre) {
-    while (isNaN(testNbre)) {
-		testNbre = parseFloat(prompt("Ceci n'est pas un nombre. Merci de taper un nombre."));
+    while (isNaN(testNbre) || (testNbre < 0)) {
+		testNbre = parseFloat(prompt("Donnée invalide. Merci de taper un nombre positif."));
 	}
 	return testNbre;
 }
